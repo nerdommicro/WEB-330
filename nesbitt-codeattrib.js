@@ -11,7 +11,7 @@ var assignment = "x.x"
 //Print my header to the screen
 const header = require('../Nesbitt-header.js');
 //Display my header with exercise number
-console.log(header.display("Michelle", "Nesbitt", "Exercise " + assignment));
+console.log(header.display("Michelle", "Nesbitt", "Exercise " + assignment+ "\n"));
 
 /*
   Expected output:
