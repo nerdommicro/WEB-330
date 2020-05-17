@@ -1,0 +1,44 @@
+<!--/*
+======================================================
+; Title:  nesbitt-assignment4-3.html
+; Author: Michelle Nesbitt
+; Date:   5-17-2020
+; Modified By: Michelle Nesbitt
+; Description: Demonstrates Ajax Delete
+;=====================================================
+*/-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment name</title>
+
+    <!-- jQuery reference -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<h4>HTTP DELETE</h4>
+<button id="delete1">HTTP DELETE Request (Object Literal)</button>
+<br/>
+<script type="text/javascript">
+ $(function () {
+
+    $('#delete1').click(function () {
+        $.ajax({
+            url: "http://httpbin.org/delete",
+            dataType: "json",
+            type: "DELETE",
+            data: {username: "administrator", password: "s3cret", pin: "1234"},
+            success: function (data, status) {
+                console.log("Username: " + data.form.username +
+                "\nPassword: " + data.form.password +
+                "\nPIN: " + data.form.pin +
+                "\nStatus: " + status);
+            }
+        })
+    });
+ });
+</script>
+</body></html>
