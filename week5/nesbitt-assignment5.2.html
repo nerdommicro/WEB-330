@@ -1,0 +1,49 @@
+<!--/*
+======================================================
+; Title:  nesbitt-assignment5.2.html
+; Author: Michelle Nesbitt
+; Date:   5-27-2020
+; Modified By: Michelle Nesbitt
+; Description: Demonstrates JQuery
+;=====================================================
+*/-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 5.2 - The Proxy Pattern</title>
+
+    <!-- jquery Reference Library -->
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  </head>
+  <body>
+  <blockquote>
+  <h2>Michelle's Proxy Example</h2>
+
+    <button class="btn btn-primary" id="btnExample1">Go</button>
+
+  <br /><span id="proxyExampleOne"></span>
+  <hr>
+
+
+      <script>
+        $(function() {
+          var wallplate = {
+            color: "White",
+            sku: "A-WPC125",
+            display: function() {
+              $("#proxyExampleOne").append("<br />COLOR: " + this.color + "<br />" + "SKU: " + this.sku);
+              }
+            };
+
+            $("#btnExample1").click($.proxy(wallplate, "display"));
+
+        });
+      </script>
+
+</blockquote>
+  </body>
+</html>
