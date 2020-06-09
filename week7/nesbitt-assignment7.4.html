@@ -1,0 +1,91 @@
+<!--/*
+======================================================
+; Title:  nesbitt-assignment7.4.html
+; Author: Professor Krasso
+; Date: 6-9-2020
+; Modified By: Michelle Nesbitt
+; Description: Demonstrates Knockout.js
+;=====================================================
+*/-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 7.4</title>
+    <!-- JavaScript Libraries -->
+    <script src="../knockout-3.5.1.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+  <body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <ul class="navbar-nav">
+      <li class="nav-item active">
+      <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="#">Contact Us</a>
+      </li>
+      </ul>
+  </nav>
+  <div role="main" class="container">
+    <br/><br/>
+    <h2>Knockout JS</h2>
+    <table class="table table-dark table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+      <tbody data-bind="foreach: tutorials">
+        <tr>
+          <td data-bind="text: title"></td>
+          <td data-bind="text: description"></td>
+          <td><a data-bind="text: URL, attr: {href: URL}, style:{color: 'blue'}" target="_new"></a></td>
+        </tr>
+    </tbody>
+    </table>
+    <br/>
+  </div>
+
+<script>
+  function tutorialViewModel(){
+    this.tutorials=ko.observableArray([
+        {
+        title: "TutorialsPoint",
+        description: "Learn HTML",
+        URL: "http://www.tutorialspoint.com/"
+        },
+        {
+        title:"Learn HTML and other languages",
+        description:"Learn HTML CSS and Javascript",
+        URL: "https://www.w3schools.com"
+        },
+        {
+        title: "Learn to Code",
+        description: "Learning to code bootcamps",
+        URL: "https://www.codesmith.io"
+        },
+        {
+        title: "Learn to Code 2",
+        description: "Learning to code bootcamps 2",
+        URL: "https://www.switchup.org/rankings/best-coding-bootcamps"
+        },
+        {
+        title: "Learn to Code 3",
+        description: "Learning to code bootcamps 3",
+        URL: "https://www.switchup.org/"
+        }
+    ]);
+  };
+  ko.applyBindings(new tutorialViewModel());
+</script>
+  </body>
+  </html>
