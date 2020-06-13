@@ -147,7 +147,7 @@
         if ((self.employeeToAdd() !== "") && (self.Employees.indexOf(self.employeeToAdd()) < 0))
         {
           self.error("");
-          self.Employees.push({ Id: self.Employees().length, Name: self.nameToAdd() });
+          self.Employees.push({Id: self.Employees().length, Name: self.employeeToAdd()});
         }
         else
         {
