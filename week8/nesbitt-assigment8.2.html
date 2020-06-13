@@ -1,0 +1,78 @@
+
+<!--/*
+======================================================
+; Title:  nesbitt-assignment7.4.html
+; Author: Professor Krasso
+; Date: 6-9-2020
+; Modified By: Michelle Nesbitt
+; Description: Demonstrates Knockout.js
+;=====================================================
+*/-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercise 7.4</title>
+    <!-- JavaScript Libraries -->
+    <script src="../knockout-3.5.1.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+  <body>
+  <div role="main" class="container">
+  <br/><br/>
+  <h2>CR Example</h2>
+  <br/>
+    <div class="row" data-bind="if: error">
+      <div class="col-sm-12">
+        <div class="alert alert-danger" role="alert">
+          <strong>Warning!</strong> <span data-bind="text: error()"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card card-inverse" style="background-color: #333; border-color:#333; color: white;">
+          <div class="card-block p-3">
+            <h3 class="card-title">Employee List</h3>
+              <div class="card-text">
+                  <div class="form-group row">
+                    <label for="txtEmp" class="col-2 col-form-label">Employee Name: </label>
+                      <div class="col-6">
+                      <input type="text" data-bind="value: employeeToAdd, valueUpdate:'afterkeydown'"class="form-control" id="txtEmp"/>
+                      </div>
+                    <div class="col-4">
+                        <a href="#" data-bind="click: add" class="btn btnprimary">Add</a>
+                    </div>
+                  </div>
+        <div class="form-group">
+          <label for="txtEmpList">Employees: </label>
+          <select size="10" class="form-control" data-bind="options: employeesArray" id="txtEmpList"></select>
+              </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+ function EmployeeViewModel() {
+  this.employeeToAdd = ko.observable("");
+  this.employeesArray = ko.observableArray(["Michelle", "Steve"]);
+  this.error = ko.observable("");
+  this.add = function () {
+    if ((this.employeeToAdd() !== "") && (this.employeesArray.indexOf(this.employeeToAdd()) < 0)) {
+      this.error("");
+      this.employeesArray.push(this.employeeToAdd());
+    }
+    else {
+      this.error("Duplicate or Invalid Entry.");
+    }
+      this.employeeToAdd("");
+    }
+  }
+  ko.applyBindings(new EmployeeViewModel());
+  </script>
+  </body>
+</html>
